@@ -11,5 +11,4 @@ contributions:
       title: Make memmap config widget
   widgets:
     - command: napari-memmap-tiff.make_function_widget
-      autogenerate: true
-      display_name: Enable / disable loading tiffs using memory maps
+      display_name: Enable / disable memory mapping tiffs

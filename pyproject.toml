@@ -1,7 +1,7 @@
 [project]
 name = "napari-memmap-tiff"
 dynamic = ["version"]
-description = "Loads tif and tiff files using memory mapping so we don't load the file into memory at once."
+description = "When installed and enabled in the options, it adds an option that when enabled will make napari load tiffs via memory mapping instead of fully into RAM."
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
