@@ -25,7 +25,7 @@ def memmap_config_widget(
         known_plugins["tifffile_memmap"] = PluginConfig(
             name="tifffile_memmap",
             class_name="MemmapTifffilePlugin",
-            module_name="imageio.plugins.tifffile_v3",
+            module_name="napari_memmap_tiff._widget",
             is_legacy=False,
         )
         for ext in extension_list:
