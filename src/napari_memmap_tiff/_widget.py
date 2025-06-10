@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 import numpy as np
+import tifffile
 from imageio.config.extensions import extension_list
 from imageio.config.plugins import PluginConfig, known_plugins
 from imageio.plugins.tifffile_v3 import TifffilePlugin
@@ -12,8 +13,12 @@ if TYPE_CHECKING:
 
 class MemmapTifffilePlugin(TifffilePlugin):
 
-    def read(self, *args, **kwargs) -> np.ndarray:
-        return super().read(*args, **kwargs, out="memmap")
+    def read(
+        self, *, index: int = None, page: int = None, **kwargs
+    ) -> np.ndarray:
+        if index in (Ellipsis, None) and page is None:
+            return tifffile.memmap(self.request.get_local_filename())
+        return super().read(index=index, page=page, out="memmap", **kwargs)
 
 
 @magic_factory(auto_call=True, persist=False)
@@ -26,6 +31,11 @@ def memmap_config_widget(
     :param enable_memory_map: If enabled, tiff or tif files will be loaded as
         memory mapped data directly from disk, instead of loading it fully into
         memory at once.
+
+        Closing and re-opening the plugin removes the checkmark, but it stays
+        set to the last value until napari is re-opened when it's reset. So
+        check and then uncheck the box to disable, after hiding / showing the
+        plugin.
     """
     if enable_memory_map:
         if "tifffile_memmap" in known_plugins:
