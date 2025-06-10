@@ -1,9 +1,7 @@
-<!-- This file is a placeholder for customizing description of your plugin 
-on the napari hub if you wish. The readme file will be used by default if
-you wish not to do any customization for the napari hub listing.
+When installed, it adds an option that when enabled will cause the napari
+to load tiffs using memory mapping.
 
-If you need some help writing a good description, check out our 
-[guide](https://github.com/chanzuckerberg/napari-hub/wiki/Writing-the-Perfect-Description-for-your-Plugin)
--->
-
-The developer has not yet provided a napari-hub specific description.
+That is, `.tif` and `.tiff` files will be loaded into memory using memory
+mapping, which loads the data directly from disk instead of loading the file
+at once into RAM. This is beneficial for large files that may not fit into
+available RAM.

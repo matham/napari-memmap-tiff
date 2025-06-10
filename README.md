@@ -9,7 +9,13 @@
 [![npe2](https://img.shields.io/badge/plugin-npe2-blue?link=https://napari.org/stable/plugins/index.html)](https://napari.org/stable/plugins/index.html)
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-purple.json)](https://github.com/copier-org/copier)
 
-Loads tif and tiff files using memory mapping so we don't load the file into memory at once.
+When installed, it adds an option that when enabled will cause the napari
+to load tiffs using memory mapping.
+
+That is, `.tif` and `.tiff` files will be loaded into memory using memory
+mapping, which loads the data directly from disk instead of loading the file
+at once into RAM. This is beneficial for large files that may not fit into
+available RAM.
 
 ----------------------------------
 
